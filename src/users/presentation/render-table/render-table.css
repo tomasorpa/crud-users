@@ -1,0 +1,9 @@
+.sisonido{
+    color: aqua;
+}
+thead {
+    background-color: rgba(0, 0, 0, 0.392);
+}
+th{
+    padding:.5rem; 
+}
