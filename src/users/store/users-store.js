@@ -1,17 +1,24 @@
 import { loadUsersByPage } from "../use-cases/load-users-by-page";
+import { validatePages } from "../use-cases/validate-pages";
 
 const state = {
     currentPage: 0,
-    users:[],
+    users: [],
+    nextPage:1,
 }
 //TODO:
-const loadNextPage =async () => {
+const loadNextPage = async () => {
     const users = await loadUsersByPage(state.currentPage + 1);
-    console.log('users.length:', users.length); 
-    if (users.next === null) return;
-    console.log(users)
+    
+    const pageNull = await validatePages(state.currentPage + 1);
+   
+ 
+    
+    if (pageNull.last === state.currentPage) return
+    
     state.currentPage += 1;
-    console.warn(state.currentPage)
+    state.nextPage += 1;
+   
     state.users = users;
 }
 const loadPreviousPage =async () => {

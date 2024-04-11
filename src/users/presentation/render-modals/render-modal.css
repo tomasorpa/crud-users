@@ -1,0 +1,36 @@
+*{
+       font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+.modal-styles {
+    background-color: rgba(0, 0, 0, 0.322);
+    position: fixed;
+    top:0 ;
+    left: 0;
+    width: 100vw;
+    height: 100vh; 
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 10px;
+    background-color: rgb(248, 237, 198);
+    padding: 2rem;
+    border-radius:10px ;
+    color: rgb(8, 8, 8);
+}
+input[type=text],input[type=number]{
+    padding: 10px;
+    font-size: 14px;
+}
+.modal-dialog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;    
+    height: 100vh;
+ 
+}
+.modal-hidden{
+    display:  none;
+}

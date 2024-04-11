@@ -59,8 +59,8 @@ tableHeader.innerHTML = `
         <th>LastName</th>
         <th>Balance</th>
         <th>Avatar</th>
-        <th>Gender</th>
         <th>IsActive</th>
+        <th>Gender</th>
         <th>Actions</th>
     </tr>`;
 export const renderTable = (element) => {

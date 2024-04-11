@@ -14,7 +14,7 @@ export const renderBtns = (element) => {
     const currentPage = document.createElement("span");
     currentPage.style.margin="0 10px"
     currentPage.innerText=`${usersStore.getCurrentPage()}`
-    element.append(previousUsersBtn,currentPage ,nextUsersBtn)
+    
     
     previousUsersBtn.addEventListener("click",async () => {
         await usersStore.loadPreviousPage();
@@ -26,5 +26,5 @@ export const renderBtns = (element) => {
         currentPage.innerText=`${usersStore.getCurrentPage()}`
         renderTable(element)
     });
-  
+  element.append(previousUsersBtn,currentPage ,nextUsersBtn)
 }
