@@ -450,5 +450,15 @@
 "last_name": "Woodward",
 "gender": "male"
 }
+,
+{
+"id": 51,
+"isActive": true,
+"balance": 1174.43,
+"avatar": "http://placehold.it/32x32",
+"first_name": "Melissa",
+"last_name": "Bramstorn",
+"gender": "female"
+}
 ]
 }

@@ -1,14 +1,16 @@
 import modalHTML from "./render-modal.html?raw"
 import "./render-modal.css"
+import { saveUser } from "../../use-cases/save-users";
 let modal,form,buttonSubmit;
 
 
 /**
  * 
  * @param {HTMLDivElement} element 
- */
+ * @param {{userLike}=>Promise<void> }callback
+*/
 
-export const renderModal = (element) => {
+export const renderModal = (element,callback) => {
     
     if (modal) return;
     modal = document.createElement("div");
@@ -23,29 +25,34 @@ export const renderModal = (element) => {
             hideModal();
         }  
     });
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit",async (event) => {
         event.preventDefault();
         
         const formData = new FormData(form);
         const userLike = {};
+        if(!formData.get('isActive')){
+            formData.append('isActive', 'off');
+        }
         for (let [key,value] of formData) {
         
-
-            // TODO: balance value to number
             if (key === "balance") {
                 userLike[key]= +value
                 continue
             }
-            
-            // TODO: IsActive value to true or false
+        
             if (key === "isActive") {
-                userLike[key] = (value === "off") ? false : true;
-                
+                userLike[key] = (value === "off") ? false : true;     
+                try {
+                    console.log(userLike[key])
+                } catch (error) {
+                    console.error(error)
+                }
                 continue
             }
             userLike[key]= value
             
-        }console.log(userLike)
+        }
+        await callback(userLike)
         hideModal()
     })
 }
